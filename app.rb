@@ -72,7 +72,8 @@ post "/signup" do
   fname = params[:fname]
   lname = params[:lname]
   email = params[:email]
-  user = User.new(username: username, password: password, fname:fname, lname: lname, email: email)
+  birthday = params[:birthday]
+  user = User.new(username: username, password: password, fname:fname, lname: lname, email: email, birthday: birthday)
   if user.save
     redirect "/"
   else

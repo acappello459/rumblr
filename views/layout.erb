@@ -6,7 +6,6 @@
     <!-- <link rel="stylesheet" href="../css/main.css"> -->
   </head>
   <body>
-    <%if session[:user_id]%>
     <nav class='navbar'>
       <ul>
         <li><a href="/">Home</a></li>
@@ -17,6 +16,7 @@
         </form></li>
       </ul>
     </nav>
+    <%if session[:user_id]%>
     logged in as: <%= current_user.username%>
     <%end%>
 <div class="main-wrapper">

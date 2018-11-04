@@ -1,5 +1,7 @@
-<div class="signing-form">
+<% if !session[:user_id]%>
+
 <div class='signup'>
+
 <h6>Create new user</h6>
 <form class="" action="/signup" method="post">
   <input type="text" name="username" placeholder="Enter Username">
@@ -7,9 +9,11 @@
   <input type="text" name="fname" placeholder="Enter First Name">
   <input type="text" name="lname" placeholder="Enter Last Name">
   <input type="text" name="email" placeholder="Enter Valid Email">
+  <input type="text" name="email" placeholder="DD/MM">
   <input type="submit" name="" value="Sign Up">
 </form>
 </div>
+<div class="signing-form">
 
     <div class="login">
       <h6>Already a user?</h6>
@@ -20,16 +24,16 @@
         </form>
       </div>
 </div>
-<hr>
+
+<% end %>
+
 <% if session[:user_id] %>
 
 <h3>List of all blogs</h3>
 
-<% @blogs.each_with_index do |x, index| %>
-    <div><%=index+1%> Title: <a href="/blogs/<%=x.id%>"><%=x.title%></a></div>
+<% @blogs.all.reverse[0..4].each do |x, index| %>
+    <div>Title: <a href="/blogs/<%=x.id%>"><%=x.title%></a></div>
     <div>Content: <%=x.content%></div>
     <div>Posted By: <%= x.user.fname%></div>
     <% end %>
-
-
-<%end%>
+  <% end %>
