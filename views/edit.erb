@@ -1,0 +1,10 @@
+<h3>Update an existing Blog:</h3>
+<form action="/update/<%= @blog.id%>" method="post">
+  <p>Title:</p>
+  <input type="text" name="title" value="<%= @blog.title%>">
+  <p>Content:</p>
+  <textarea type="text" name="content"><%= @blog.content%></textarea>
+  <br>
+  <input type="submit" name="" value="Submit">
+
+</form>

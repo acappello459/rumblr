@@ -1,0 +1,35 @@
+<div class="signing-form">
+<div class='signup'>
+<h6>Create new user</h6>
+<form class="" action="/signup" method="post">
+  <input type="text" name="username" placeholder="Enter Username">
+  <input type="text" name="password" placeholder="Enter Password">
+  <input type="text" name="fname" placeholder="Enter First Name">
+  <input type="text" name="lname" placeholder="Enter Last Name">
+  <input type="text" name="email" placeholder="Enter Valid Email">
+  <input type="submit" name="" value="Sign Up">
+</form>
+</div>
+
+    <div class="login">
+      <h6>Already a user?</h6>
+        <form class="" action="/login" method="post">
+          <input type="text" name="username" value="">
+          <input type="text" name="password" value="">
+          <input type="submit" name="" value="Login">
+        </form>
+      </div>
+</div>
+<hr>
+<% if session[:user_id] %>
+
+<h3>List of all blogs</h3>
+
+<% @blogs.each_with_index do |x, index| %>
+    <div><%=index+1%> Title: <a href="/blogs/<%=x.id%>"><%=x.title%></a></div>
+    <div>Content: <%=x.content%></div>
+    <div>Posted By: <%= x.user.fname%></div>
+    <% end %>
+
+
+<%end%>
